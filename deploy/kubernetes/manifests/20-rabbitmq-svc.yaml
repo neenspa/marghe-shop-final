@@ -1,0 +1,26 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rabbitmq
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "9090"
+  labels:
+    name: rabbitmq
+    backstage.io/kubernetes-id: marghe-shop-final
+    app.kubernetes.io/name: marghe-shop-final
+    rht-gitops.com/janus-argocd: marghe-shop-final
+  namespace: marghe-shop
+spec:
+  ports:
+    # the port that this service should serve on
+    - port: 5672
+      name: rabbitmq
+      targetPort: 5672
+    - port: 9090
+      name: exporter
+      targetPort: exporter
+      protocol: TCP
+  selector:
+    name: rabbitmq

@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: marghe-shop
+  labels:
+    backstage.io/kubernetes-id: marghe-shop-final
+    app.kubernetes.io/name: marghe-shop-final
+    rht-gitops.com/janus-argocd: marghe-shop-final
+spec:

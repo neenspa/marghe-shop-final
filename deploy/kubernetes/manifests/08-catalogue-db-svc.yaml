@@ -1,0 +1,18 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: catalogue-db
+  labels:
+    name: catalogue-db
+    backstage.io/kubernetes-id: marghe-shop-final
+    app.kubernetes.io/name: marghe-shop-final
+    rht-gitops.com/janus-argocd: marghe-shop-final
+  namespace: marghe-shop
+spec:
+  ports:
+    # the port that this service should serve on
+    - port: 3306
+      targetPort: 3306
+  selector:
+    name: catalogue-db

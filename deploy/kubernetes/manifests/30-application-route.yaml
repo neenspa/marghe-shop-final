@@ -1,0 +1,21 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: shop-frontend-nb
+  namespace: marghe-shop
+  labels:
+    name: front-end
+    backstage.io/kubernetes-id: marghe-shop-final
+    app.kubernetes.io/name: marghe-shop-final
+    rht-gitops.com/janus-argocd: marghe-shop-final
+spec:
+  #host:
+  to:
+    kind: Service
+    name: front-end
+    weight: 100
+  port:
+    targetPort: 8079
+  wildcardPolicy: None
+  tls:
+    termination: edge
